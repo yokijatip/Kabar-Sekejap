@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "985293504787",
+    "project_id": "kabar-sekejap",
+    "storage_bucket": "kabar-sekejap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985293504787:android:b2f3a221f52da8fb4a1ae6",
+        "android_client_info": {
+          "package_name": "eastbound.yokijatiperkasa.kabarsekejap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy07EYP4dyZuPREo_-S7lfCZSw0woHTlE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

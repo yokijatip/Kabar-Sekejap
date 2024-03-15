@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Kabar Sekejap</string>
+
+<!--    Onboarding-->
+    <string name="onboarding_header">Hai Buddy\nWelcome to Kabar Sekejap</string>
+    <string name="onboarding_description">Thank you for wanting to try this application, the purpose of this application was made only for my portfolio </string>
+
+<!--    Login Screen-->
+    <string name="login_header">Welcome Back!</string>
+    <string name="login_description">Welcome back, sorry if my application has a lot of bugs.</string>
+    <string name="login_forgot_password">Forgot password</string>
+    <string name="login_create_account">Create an new account?</string>
+
+<!--    Register Screen-->
+    <string name="register_header">Create Account</string>
+    <string name="register_description">Thank you for wanting to try this application, the purpose of this application was made only for my portfolio </string>
+    <string name="register_already_have_account">Already have account?</string>
+
+<!--    Button Text-->
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+
+<!--    Bottom Navigation Bar-->
+    <string name="nav_home">Home</string>
+    <string name="nav_contacts">Contacts</string>
+    <string name="nav_settings">Settings</string>
+
+<!--    Screen-->
+    <string name="home_screen_topbar_text">Messages</string>
+    <string name="home_screen_empty_chat_text">Try chatting with someone (´◡`)</string>
+
+    <string name="contacts_screen_topbar_text">Contacts</string>
+
+    <string name="settings_screen_topbar_text">Settings</string>
+    <string name="settings_screen_heading_menu_text">Account</string>
+    <string name="settings_screen_menu1_text">Notification</string>
+    <string name="settings_screen_menu2_text">Recycle Bin</string>
+    <string name="settings_screen_menu3_text">Privacy</string>
+    <string name="settings_screen_menu4_text">Archive</string>
+    <string name="settings_screen_menu5_text">Language</string>
+    <string name="settings_screen_menu6_text">Help</string>
+    <string name="settings_screen_menu7_text">Support Me</string>
+
+
+
+
+</resources>
