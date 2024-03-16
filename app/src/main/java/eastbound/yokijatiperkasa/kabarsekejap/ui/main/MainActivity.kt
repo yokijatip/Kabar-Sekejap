@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+//        Skema Realtime Database
 //        Menambahkan pengguna baru
         val user = User(
             userId = "12345",
@@ -60,6 +61,8 @@ class MainActivity : AppCompatActivity() {
 
         val messageDatabaseReference = FirebaseDatabase.getInstance().getReference("chats")
         messageDatabaseReference.child(chat.chatId).child("messages").push().setValue(message)
+
+
 
 
     }
