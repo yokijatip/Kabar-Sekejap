@@ -1,5 +1,6 @@
 package eastbound.yokijatiperkasa.kabarsekejap.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +9,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.database
+import eastbound.yokijatiperkasa.kabarsekejap.Helper
 import eastbound.yokijatiperkasa.kabarsekejap.R
 import eastbound.yokijatiperkasa.kabarsekejap.data.model.Chat
 import eastbound.yokijatiperkasa.kabarsekejap.data.model.Message
 import eastbound.yokijatiperkasa.kabarsekejap.data.model.User
 import eastbound.yokijatiperkasa.kabarsekejap.databinding.ActivityMainBinding
+import eastbound.yokijatiperkasa.kabarsekejap.ui.onboarding.OnBoardingActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,41 +32,61 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        binding.apply {
+            btnLogout.setOnClickListener {
+                logout()
+            }
+
+        }
+
 //        Skema Realtime Database
-//        Menambahkan pengguna baru
-        val user = User(
-            userId = "12345",
-            username = "John Doe",
-            email = "johndoe@gmail.com",
-            profilePicture = "https://a.storyblok.com/f/191576/1200x800/215e59568f/round_profil_picture_after_.webp"
-        )
-
-        val userDatabaseReference = FirebaseDatabase.getInstance().getReference("users")
-        userDatabaseReference.child(user.userId).setValue(user)
-
-//        Menambahkan Room chat baru
-        val chat = Chat(
-            chatId = "chat123",
-            participant = listOf("12345", "67890"),
-            messages = listOf()
-        )
-        val chatDatabaseReference = FirebaseDatabase.getInstance().getReference("chats")
-        chatDatabaseReference.child(chat.chatId).setValue(chat)
-
-//        Menambahkan pesan baru
-        val message = Message(
-            messageId = "message456",
-            senderId = "12345",
-            receiverId = "67890",
-            content = "Hello, how are you?",
-            timestamp = System.currentTimeMillis()
-        )
-
-        val messageDatabaseReference = FirebaseDatabase.getInstance().getReference("chats")
-        messageDatabaseReference.child(chat.chatId).child("messages").push().setValue(message)
-
-
+////        Menambahkan pengguna baru
+//        val user = User(
+//            userId = "12345",
+//            username = "John Doe",
+//            email = "johndoe@gmail.com",
+//            profilePicture = "https://a.storyblok.com/f/191576/1200x800/215e59568f/round_profil_picture_after_.webp"
+//        )
+//
+//        val userDatabaseReference = FirebaseDatabase.getInstance().getReference("users")
+//        userDatabaseReference.child(user.userId).setValue(user)
+//
+////        Menambahkan Room chat baru
+//        val chat = Chat(
+//            chatId = "chat123",
+//            participant = listOf("12345", "67890"),
+//            messages = listOf()
+//        )
+//        val chatDatabaseReference = FirebaseDatabase.getInstance().getReference("chats")
+//        chatDatabaseReference.child(chat.chatId).setValue(chat)
+//
+////        Menambahkan pesan baru
+//        val message = Message(
+//            messageId = "message456",
+//            senderId = "12345",
+//            receiverId = "67890",
+//            content = "Hello, how are you?",
+//            timestamp = System.currentTimeMillis()
+//        )
+//
+//        val messageDatabaseReference = FirebaseDatabase.getInstance().getReference("chats")
+//        messageDatabaseReference.child(chat.chatId).child("messages").push().setValue(message)
 
 
+
+
+
+
+    }
+
+
+    private fun logout() {
+        Helper.auth.signOut()
+        startActivity(Intent(this@MainActivity, OnBoardingActivity::class.java))
+        finish()
+    }
+
+    private fun handleBackButton() {
+        
     }
 }
