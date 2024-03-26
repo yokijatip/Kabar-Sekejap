@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import eastbound.yokijatiperkasa.kabarsekejap.R
 import eastbound.yokijatiperkasa.kabarsekejap.data.model.Settings
@@ -30,6 +31,9 @@ class SettingsAdapter(private val listSettings: ArrayList<Settings>) :
         val (ivSettings, tvSettings) = listSettings[position]
         holder.ivSettings.setImageResource(ivSettings)
         holder.tvSettings.text = tvSettings
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context, "Item Menu ${listSettings[holder.adapterPosition].tvSettings}", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
