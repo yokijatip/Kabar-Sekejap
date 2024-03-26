@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -46,6 +47,19 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-core:21.1.1")
     implementation("com.google.firebase:firebase-database:20.3.1")
+    implementation("com.google.firebase:firebase-auth-ktx")
+
+//    Lottie
+    implementation("com.airbnb.android:lottie:6.2.0")
+
+//    Glide for getting online image
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+//    Circle Image
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    //    Chip Bottom Navigation
+    implementation("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

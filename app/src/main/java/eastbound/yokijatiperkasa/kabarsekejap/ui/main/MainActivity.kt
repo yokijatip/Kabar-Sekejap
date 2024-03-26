@@ -6,20 +6,32 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.google.firebase.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.database
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import eastbound.yokijatiperkasa.kabarsekejap.Helper
 import eastbound.yokijatiperkasa.kabarsekejap.R
 import eastbound.yokijatiperkasa.kabarsekejap.data.model.Chat
 import eastbound.yokijatiperkasa.kabarsekejap.data.model.Message
 import eastbound.yokijatiperkasa.kabarsekejap.data.model.User
 import eastbound.yokijatiperkasa.kabarsekejap.databinding.ActivityMainBinding
+import eastbound.yokijatiperkasa.kabarsekejap.ui.main.contacts.ContactsFragment
+import eastbound.yokijatiperkasa.kabarsekejap.ui.main.messages.MessagesFragment
+import eastbound.yokijatiperkasa.kabarsekejap.ui.main.settings.SettingsFragment
 import eastbound.yokijatiperkasa.kabarsekejap.ui.onboarding.OnBoardingActivity
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private fun fragmentManager(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+
+        transaction.replace(R.id.content, fragment, fragment.javaClass.simpleName)
+        transaction.commit()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +43,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        implementFragmentTransaction()
 
         binding.apply {
-            btnLogout.setOnClickListener {
-                logout()
-            }
 
         }
 
@@ -77,6 +87,31 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+    private fun implementFragmentTransaction(){
+        binding.apply {
+            bottomNav.setOnItemSelectedListener(object : ChipNavigationBar.OnItemSelectedListener {
+                override fun onItemSelected(id: Int) {
+                    when(id) {
+                        R.id.nav_messages -> {
+                            val fragment = MessagesFragment.newInstance()
+                            fragmentManager(fragment)
+                        }
+                        R.id.nav_contacts -> {
+                            val fragment = ContactsFragment.newInstance()
+                            fragmentManager(fragment)
+                        }
+                        R.id.nav_settings -> {
+                            val fragment = SettingsFragment.newInstance()
+                            fragmentManager(fragment)
+                        }
+                    }
+                }
+            })
+        }
+        fragmentManager(MessagesFragment.newInstance())
+        binding.bottomNav.setItemSelected(R.id.nav_messages)
     }
 
 
