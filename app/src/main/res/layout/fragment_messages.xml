@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.messages.MessagesFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,23 +18,46 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_bold"
             android:text="Messages"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:fontFamily="@font/inter_bold"
-            />
+            android:textSize="24sp" />
 
 
         <ImageView
             android:id="@+id/search"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_search"
             android:layout_width="28dp"
-            android:layout_height="28dp"/>
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_search" />
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_messages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="8"
+        tools:listitem="@layout/item_list_messages" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/ic_plus"
+        app:backgroundTint="@color/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:rippleColor="@color/white"
+        app:tint="@color/white" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -56,7 +80,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
