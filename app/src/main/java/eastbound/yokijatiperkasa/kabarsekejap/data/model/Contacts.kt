@@ -1,4 +1,10 @@
 package eastbound.yokijatiperkasa.kabarsekejap.data.model
 
-class Contacts {
-}
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Contacts(
+    val image: Int? = null,
+    val name: String? = null
+) : Parcelable

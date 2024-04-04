@@ -12,6 +12,11 @@ import eastbound.yokijatiperkasa.kabarsekejap.data.model.Settings
 
 class SettingsAdapter(private val listSettings: ArrayList<Settings>) :
     RecyclerView.Adapter<SettingsAdapter.SettingsViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     class SettingsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivSettings: ImageView = view.findViewById(R.id.iv_settings_menu)
@@ -31,10 +36,14 @@ class SettingsAdapter(private val listSettings: ArrayList<Settings>) :
         val (ivSettings, tvSettings) = listSettings[position]
         holder.ivSettings.setImageResource(ivSettings)
         holder.tvSettings.text = tvSettings
-        holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "Item Menu ${listSettings[holder.adapterPosition].tvSettings}", Toast.LENGTH_SHORT).show()
+        holder.itemView.setOnClickListener{
+            onItemClickCallback.onItemClicked(listSettings[holder.adapterPosition])
         }
 
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Settings)
     }
 
 }

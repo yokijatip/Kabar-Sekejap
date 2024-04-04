@@ -55,6 +55,7 @@
         <item>Language</item>
         <item>Help</item>
         <item>Support Me</item>
+        <item>Logout</item>
 
     </string-array>
 
@@ -67,6 +68,7 @@
         <item>@drawable/ic_language</item>
         <item>@drawable/ic_help</item>
         <item>@drawable/ic_credit_card</item>
+        <item>@drawable/ic_logout</item>
 
     </integer-array>
 
