@@ -11,6 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import eastbound.yokijatiperkasa.kabarsekejap.Helper
 import eastbound.yokijatiperkasa.kabarsekejap.LogTag
 import eastbound.yokijatiperkasa.kabarsekejap.R
@@ -38,13 +41,13 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        TODO
         rvSettings = binding.rvSettings
         rvSettings.setHasFixedSize(true)
 
         listSettings.addAll(getListSetting())
         showRecyclerView()
         accountSettings()
+        showUserInformation()
     }
 
 
@@ -78,7 +81,6 @@ class SettingsFragment : Fragment() {
             override fun onItemClicked(data: Settings) {
                 when (data.tvSettings) {
                     "Logout" -> {
-                        Log.i(LogTag.TAG_COMMON.tag, "Berhasil Logout")
                         logout()
                     }
                 }
@@ -101,5 +103,32 @@ class SettingsFragment : Fragment() {
         Helper.auth.signOut()
         startActivity(Intent(requireContext(), OnBoardingActivity::class.java))
         requireActivity().finish()
+    }
+
+    private fun showUserInformation() {
+        binding.apply {
+
+            val uid = Helper.auth.currentUser?.uid
+            val databaseReference = uid?.let { Helper.rtDatabase.getReference("users").child(it) }
+            databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val username = snapshot.child("username").getValue(String::class.java)
+                    if (username != null) {
+                        tvUsername.text = username
+                    } else {
+                        Log.d(LogTag.TAG_AUTH.tag, "Username not found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d(LogTag.TAG_AUTH.tag, "Failed ro read value", error.toException())
+                }
+
+            })
+
+            val email = Helper.auth.currentUser?.email
+            tvEmail.text = email
+
+        }
     }
 }

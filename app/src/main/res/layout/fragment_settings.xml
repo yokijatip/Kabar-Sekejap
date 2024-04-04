@@ -79,12 +79,12 @@
             <TextView
                 android:id="@+id/tv_username"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="31dp"
                 android:fontFamily="@font/inter_medium"
                 android:padding="2dp"
-                android:text="Yoki Jati Perkasa"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="16sp"
+                tools:text="Yoki Jati Perkasa" />
 
             <TextView
                 android:id="@+id/tv_email"
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_reguler"
                 android:padding="2dp"
-                android:text="yokijati@gmail.com"
+                tools:text="yokijati@gmail.com"
                 android:textColor="@color/dark_grey"
                 android:textSize="14sp" />
 
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/setting_profile"
-        app:strokeColor="@color/soft_grey"
+        app:strokeColor="#E3E3E3"
         app:strokeWidth="1dp" />
 
     <androidx.recyclerview.widget.RecyclerView
